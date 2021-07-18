@@ -8,13 +8,13 @@ class RandomWords extends StatefulWidget {
 
 class RandomWordsState extends State<RandomWords> {
   final _randomWordPairs = <WordPair>[];
-  final _savedWordPairs = Set<WordPair>();
+  final _savedWordPairs = <WordPair>{};
 
   Widget _BuildList() {
     return ListView.builder(
       padding: const EdgeInsets.all(8),
       itemBuilder: (context, item) {
-        if (item.isOdd) return Divider();
+        if (item.isOdd) return const Divider();
 
         final index = item ~/ 2;
 
@@ -33,7 +33,7 @@ class RandomWordsState extends State<RandomWords> {
     return ListTile(
       title: Text(
         pair.asPascalCase,
-        style: TextStyle(fontSize: 18),
+        style: const TextStyle(fontSize: 18),
       ),
       trailing: Icon(
         saved ? Icons.favorite : Icons.favorite_border,
@@ -54,9 +54,9 @@ class RandomWordsState extends State<RandomWords> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('WordPair Genarator'),
+        title: const Text('WordPair Genarator'),
         actions: <Widget>[
-          IconButton(onPressed: _pushSaved, icon: Icon(Icons.list))
+          IconButton(onPressed: _pushSaved, icon: const Icon(Icons.list))
         ],
       ),
       body: _BuildList(),
@@ -70,7 +70,7 @@ class RandomWordsState extends State<RandomWords> {
         return ListTile(
           title: Text(
             pair.asPascalCase,
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           ),
         );
       });
@@ -80,7 +80,7 @@ class RandomWordsState extends State<RandomWords> {
 
       return Scaffold(
         appBar: AppBar(
-          title: Text('Saved WordPairs'),
+          title: const Text('Saved WordPairs'),
         ),
         body: ListView(
           children: divided,
